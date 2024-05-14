@@ -27,6 +27,79 @@ struct Node * deleteFirst(struct Node * head){
 }
 
 
+//case 2: dleleting at any given index
+struct Node * deleteAtIndex(struct Node * head, int index){
+    struct Node *p=head; //pointing p to head(first)
+    struct Node *q=head->next;     //pointing q to next of p
+
+
+// running the loop till p is before q. and q is at desire index we want to delete 
+    for (int i = 0; i < index-1; i++)
+    {
+     p=p->next;
+     q=p->next;   
+    }
+
+    //after looping when p and q at desire position
+
+    p->next=q->next;   //putting q next to p then q is unlinked and we will be free
+    free(q); //delete q
+    return(head);
+    
+}
+
+
+// case 3: delete at last
+struct Node *deleteAtLast(struct Node * head){
+    struct Node *p= head;
+    struct Node *q=head->next;
+
+// running the loop till p is before q. and q next is NULL 
+
+    while (q->next != NULL)
+    {
+        p=p->next;
+        q=q->next;
+    }
+    p->next=NULL;
+    free(q);
+    return head;
+}
+
+
+
+
+//case 4: dleleting given value
+            //THEY DON'T WORK ON FIRST NODE DATA
+struct Node * deleteGivenvalue(struct Node * head , int value){
+    struct Node *p=head; //pointing p to head(first)
+    struct Node *q=head->next;     //pointing q to next of p
+
+
+// running the loop till q data== given value and if value not found so q-> != NULL  
+    while (q->data != value && q->next !=NULL)
+    {
+       p=p->next;
+        q=p->next;  
+    }
+
+    //after looping when p and q at desire position
+
+     if (q->data == value)
+     {
+       p->next=q->next;
+       free(q);
+        
+     }else{
+        printf("daata is not found ! \n");
+     }
+
+     
+    return head;
+    
+}
+
+
 int main(){
 
     struct Node *head;
@@ -62,8 +135,11 @@ int main(){
      linkedListTraversal(head); //passing head to function because alll are linked with it
 
       
-     head =deleteFirst(head); 
-     head =deleteFirst(head); 
+    //  head =deleteFirst(head);  //for deleting first element
+    // head=deleteAtIndex(head,2);      //deleting 2nd index
+    // head=deleteAtLast(head);
+    head=deleteGivenvalue(head, 3);
+ 
      printf("linked list after deletion \n");   
      linkedListTraversal(head); 
 
