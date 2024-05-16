@@ -42,7 +42,7 @@ struct Node * deleteAtIndex(struct Node * head, int index){
 
     //after looping when p and q at desire position
 
-    p->next=q->next;   //putting q next to p then q is unlinked and we will be free
+    p->next=q->next;   //putting q next to p then q is unlinked and we will be free it
     free(q); //delete q
     return(head);
     
@@ -71,7 +71,7 @@ struct Node *deleteAtLast(struct Node * head){
 
 //case 4: dleleting given value
             //THEY DON'T WORK ON FIRST NODE DATA
-struct Node * deleteGivenvalue(struct Node * head , int value){
+   struct Node * deleteGivenvalue(struct Node * head , int value){
     struct Node *p=head; //pointing p to head(first)
     struct Node *q=head->next;     //pointing q to next of p
 
