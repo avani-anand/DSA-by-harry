@@ -23,8 +23,8 @@ void linkedListTraversal (struct Node *head){
 struct Node * insertAtFirst (struct Node *head ,int data){
     struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
     ptr->data=data;
-
     struct Node *p=head->next;
+
     while (p->next !=head)
     {
         p=p->next;
@@ -35,7 +35,59 @@ struct Node * insertAtFirst (struct Node *head ,int data){
     ptr->next=head;
     head=ptr;
     return head;
+    
 }
+
+
+struct Node * insertAtGivenIndex(struct Node *head, int data,int index)
+{
+    struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+    ptr->data=data;
+     struct Node * p=head;
+    int i =0;
+    while ( i != index-1)
+    {
+        p= p->next;
+        i++;
+
+    }
+
+    ptr->next=p->next;
+    p->next=ptr;
+    
+};
+
+
+struct Node * insertAtEnd (struct Node*head,int data)
+{
+   struct Node * ptr=(struct Node *)malloc(sizeof(struct Node));
+   ptr->data=data;
+
+   struct Node * p=head;
+   
+   while (p->next != head)
+   {
+     p=p->next;
+   } 
+
+   p->next=ptr;
+   ptr->next=head;
+   return head;
+   
+};
+
+
+
+struct Node * insertAfterNode(struct Node * head, int data ,struct Node* prevNode)
+{
+    struct Node *ptr=(struct Node*)malloc(sizeof(struct Node));
+    ptr->data=data;
+    ptr->next=prevNode->next;
+    prevNode->next=ptr;
+    return head;
+
+};
+
 
 
 
@@ -74,7 +126,10 @@ int main(){
      printf("circular linked list before insertion \n");
      linkedListTraversal(head); //passing head to function because alll are linked with it
 
-     head=insertAtFirst(head,6000);
+    //  head=insertAtFirst(head,6000);
+    //  head =insertAtGivenIndex(head,333,2);
+    //  head =insertAfterNode(head,4444,second);
+    head = insertAtEnd(head,234564);
      printf("circular linked list after insertion \n");
      linkedListTraversal(head);
  
