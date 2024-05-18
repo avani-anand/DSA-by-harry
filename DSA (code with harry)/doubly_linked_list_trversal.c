@@ -9,7 +9,7 @@ struct node
 
 };
 
-void circularListTraversal(struct node *head){
+void circularListForwardTraversal(struct node *head){
     struct node *ptr=head;
     do
     {
@@ -17,6 +17,15 @@ void circularListTraversal(struct node *head){
         ptr=ptr->next;
     } while (ptr !=NULL);
     
+}
+
+void circularListBackwardTraversal(struct node *head){
+     struct node *ptr=head;
+    do
+    {
+        printf("element is %d \n",ptr->data);
+        ptr=ptr->prev;
+    } while (ptr !=NULL);
 }
 
 int main(){
@@ -41,7 +50,8 @@ n4->next=NULL;
 n4->prev=n3;
 n4->data=4444;
 
- circularListTraversal(n1);
+ circularListForwardTraversal(n1);
+ circularListBackwardTraversal(n4);
 
 return 0 ;
 }
