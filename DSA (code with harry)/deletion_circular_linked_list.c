@@ -35,6 +35,65 @@ struct Node * deleteFirst(struct Node * head){
     return head;
 }
 
+struct Node * deleteAtindex(struct Node * head, int index)
+{
+    struct Node * p = head;
+    struct Node *q=p->next;
+
+    for (int i = 0; i < index-1; i++)
+    {
+        p=p->next;
+        q=p->next;
+    }
+    p->next=q->next;
+    free(q);
+    return(head);
+    
+};
+
+struct Node *deleteAtLast (struct Node *head)
+{
+    struct Node*p=head;
+    struct Node *q=head->next;
+
+    while (q->next!=head)
+    {
+        p=p->next;
+        q=q->next;
+    }
+
+    p->next=head;
+    free(q);
+    return head;
+    
+};
+
+
+struct Node * deleteAfterNode(struct Node *head, int value)
+
+{
+    struct Node*p=head;
+    struct Node*q=head->next;
+
+    while (q->data !=value && q->next !=head)
+    {
+        p=p->next;
+        q=q->next;
+    }
+    
+     if (q->data == value)
+     {
+       p->next=q->next;
+       free(q);
+        
+     }else{
+        printf("daata is not found ! \n");
+     }
+
+     
+    return head;
+    
+};
 
 
 int main(){
@@ -70,8 +129,10 @@ int main(){
      linkedListTraversal(head); //passing head to function because alll are linked with it
 
      printf("list after deletion \n");
-     head =deleteFirst(head);
-    // head=deleteAtIndex(head,2);
+    //  head =deleteFirst(head);
+    // head=deleteAtindex(head,1);
+    // head =deleteAtLast(head);
+    head=deleteAfterNode(head,6);
       linkedListTraversal(head);
 return 0 ;
 }

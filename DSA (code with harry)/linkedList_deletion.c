@@ -136,9 +136,9 @@ int main(){
 
       
     //  head =deleteFirst(head);  //for deleting first element
-    // head=deleteAtIndex(head,2);      //deleting 2nd index
+    head=deleteAtIndex(head,2);      //deleting 2nd index
     // head=deleteAtLast(head);
-    head=deleteGivenvalue(head, 3);
+    // head=deleteGivenvalue(head, 3);
  
      printf("linked list after deletion \n");   
      linkedListTraversal(head); 
