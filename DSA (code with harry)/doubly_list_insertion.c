@@ -110,7 +110,7 @@ n4->data=4444;
 //  n1=insertAtFirst(n1,3333);
 //  n1=insertAtLast(n1,555555);
 //  n1=insertAtIndex(n1,3,10234);
-n1=insertAfterNode(n1,n3,234);
+n1=insertAfterNode(n1,n2,234);
  circularListForwardTraversal(n1);
 
 
