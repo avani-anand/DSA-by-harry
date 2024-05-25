@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<STDIO.H>
 #include<stdlib.h>
 struct stack
 {
@@ -55,6 +55,14 @@ int pop(struct stack *ptr ){
 
 }
 
+  int stackTop(struct stack * s){
+    return s->arr[s->top];
+  }
+
+  int stackBottom(struct stack * s){
+    return s->arr[0];
+  }
+
 int main(){
 struct stack *s;
 s->size=10;
@@ -72,17 +80,12 @@ push(s, 4535);
 push(s, 3435);
 push(s, 34535);
 push(s, 34535);
-push(s, 3455);
-push(s, 3455);  // ---->pushed 10 values
-push(s, 345);   //here on this pushing is not done because stack overflow since the size of the stack is 10
-printf("after pushing , full :%d\n",isFull(s));
-printf("after pushing , Empty :%d\n",isEmpty(s));
+push(s, 34535);
+push(s, 5);
 
 
-printf("popped %d from the stack \n", pop(s));
-printf("popped %d from the stack \n", pop(s));
-printf("popped %d from the stack \n", pop(s));
-printf("popped %d from the stack \n", pop(s));
+printf("top most value of this stack is %d \n",stackTop(s));
+printf("bottom most value of this stack is %d \n",stackBottom(s));
 
 return 0 ;
 }
