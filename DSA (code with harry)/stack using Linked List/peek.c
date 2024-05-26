@@ -37,6 +37,20 @@ int isFull(struct node* top){
     return 0;
 }
 
+
+int stackTop(struct node * top){
+    return top->data;
+}
+
+int stackBottom(struct node * top){
+    struct node *ptr=top;
+    while (ptr->next !=NULL)
+    {
+        ptr=ptr->next;
+    }
+    return ptr->data;
+}
+
 struct node *push(struct node* top, int x){
     if (isFull(top))
     {
@@ -73,6 +87,23 @@ int pop(struct node* tp){          // ab yha top jo h global variable h to local
     
 }
 
+int peek(int position){
+    struct node * ptr= top;
+    for (int i = 0; (i < position-1 && ptr !=NULL); i++)
+    {
+        ptr=ptr->next;
+    }
+    if (ptr != NULL)
+    {
+        return ptr->data;
+    }
+    else
+    {
+        return -1;
+    }
+    
+}
+
 
 
 
@@ -81,11 +112,19 @@ int main(){
     top =push(top ,30);
     top =push(top ,111);
     top =push(top ,3);
+    top =push(top ,3444);
 
-    int element=pop(top); //and yha se & remove krenge  
-    printf("popped element is %d \n",element);
+    
+    
     linkedListTraversal(top);
 
+   for (int i = 1; i <= 4; i++)
+   {
+    printf("value at position %d is : %d \n",i,peek(i));
+   }
+   
+   printf("top most value of this stack is %d \n",stackTop(top));
+printf("bottom most value of this stack is %d \n",stackBottom(top));
 
     return 0;
 
