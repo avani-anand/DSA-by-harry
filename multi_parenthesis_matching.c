@@ -56,6 +56,31 @@ char pop(struct stack *ptr ){
 
 }
 
+char stackTop(struct stack * sp){
+    return sp->arr[sp->top];
+ }
+
+int match(char a, char b){
+    if (a=='{' && b== '}')
+    {
+       return 1;
+    }
+    if (a=='(' && b== ')')
+    {
+       return 1;
+    }
+    if (a=='[' && b== ']')
+    {
+       return 1;
+    }
+    
+        return 0;
+   
+    
+}
+
+
+
 
 int parenthesisMatch(char * exp){
     //create and initializw the stack
@@ -64,13 +89,13 @@ int parenthesisMatch(char * exp){
     sp->size=100;
     sp->top=-1;
     sp->arr=(char *)malloc(sp->size * sizeof(char));
-
+    char popped_ch;
 
 for (int i = 0; exp[i] != '\0'; i++)
 {
-    if (exp[i]== '(')
+    if (exp[i]== '(' || exp[i]=='{' || exp[i]== '[')
     {
-        push(sp , '(');
+        push(sp , exp[i]);
     }else if (exp[i]== ')')
     {
         if (isEmpty(sp))
@@ -78,7 +103,13 @@ for (int i = 0; exp[i] != '\0'; i++)
             return 0;
         }
         
-        pop(sp);
+     popped_ch=  pop(sp);
+
+     if (! match(popped_ch , exp[i]))
+     {
+        /* code */ return 0;
+     }
+     
     }
     
     
@@ -98,19 +129,20 @@ if (isEmpty(sp))
 }
 
 
-
 int main(){
  
 
- char * exp= "2*(44)-3)";
+// char *exp= "([(8)(*4)]})";
+char *exp= "([(8)(*4)])";
+// char *exp= "((8)(*4))}";
   
  if (parenthesisMatch(exp))
  {
-    printf("the parenthesis is matching");
+    printf("the expression is balanced");
  }
  else
  {
-    printf("the parenthesis is not matching");
+    printf("the expression is unbalanced ");
  }
  
  
