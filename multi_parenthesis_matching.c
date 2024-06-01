@@ -96,7 +96,7 @@ for (int i = 0; exp[i] != '\0'; i++)
     if (exp[i]== '(' || exp[i]=='{' || exp[i]== '[')
     {
         push(sp , exp[i]);
-    }else if (exp[i]== ')')
+    }else if (exp[i]== ')' || exp[i]=='}' || exp[i]==']')
     {
         if (isEmpty(sp))
         {
@@ -132,8 +132,8 @@ if (isEmpty(sp))
 int main(){
  
 
-// char *exp= "([(8)(*4)]})";
 char *exp= "([(8)(*4)])";
+// char *exp= "8+89(43)+[324]*{3}";
 // char *exp= "((8)(*4))}";
   
  if (parenthesisMatch(exp))
