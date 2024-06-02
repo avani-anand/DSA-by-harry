@@ -132,7 +132,9 @@ if (isEmpty(sp))
 int main(){
  
 
-char *exp= "([(8)(*4)])";
+char *exp= "([{(8)(*4)]9)";
+// char *exp= "([(8)(*4)])";
+
 // char *exp= "8+89(43)+[324]*{3}";
 // char *exp= "((8)(*4))}";
   
