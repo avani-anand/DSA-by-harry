@@ -26,8 +26,10 @@ int isFull(struct stack * ptr){
     if (ptr->top == ptr->size -1)
     {
         return 1;
-    } else return 0;
-    
+    } else 
+    {
+      return 0;
+    }
 }
 
 void push(struct stack *ptr , char val){
@@ -50,9 +52,9 @@ char pop(struct stack *ptr ){
    return -1; 
 
 
-  }else
+  }else 
   {
-    int val =ptr->arr[ptr->top];
+    char val =ptr->arr[ptr->top];
     ptr->top--;
     return val;
 
@@ -79,7 +81,7 @@ int isOperator(char ch){
 
 
 char * infixToPostfix(char * infix){
-    struct stack * sp;
+    struct stack * sp = (struct stack *)malloc(sizeof(struct stack));
     sp->size=100;
     sp->top=-1;
     sp->arr=(char *)malloc(sp->size * sizeof(char));
@@ -108,10 +110,7 @@ char * infixToPostfix(char * infix){
             postfix[j]=pop(sp);
             j++;
         }
-        
-        
       }
-      
     }
     while (!isEmpty(sp))
     {
