@@ -37,6 +37,7 @@ void enqueue(struct queue *q,int val){
     {
         q->r++;
         q->arr[q->r]=val;
+        printf("enqueued elements : %d \n",val);
 
     }
     
@@ -53,13 +54,14 @@ int dequeue(struct queue *q){
     {
         q->f++;
         a=q->arr[q->f];
+       
     }
     return a;
 }
 
 int main(){
 struct queue q;
-q.size=100;
+q.size=4;
 q.f=q.r=-1;
 q.arr=(int *)malloc(q.size*sizeof(int));
 
@@ -68,9 +70,14 @@ q.arr=(int *)malloc(q.size*sizeof(int));
 
 enqueue(&q,122);
 enqueue(&q,1221);
+enqueue(&q,12213);
+enqueue(&q,12212);
 
 printf("dequeue element %d \n", dequeue(&q));
-// printf("dequeue element %d \n", dequeue(&q));
+printf("dequeue element %d \n", dequeue(&q));
+
+
+
 
 
 
